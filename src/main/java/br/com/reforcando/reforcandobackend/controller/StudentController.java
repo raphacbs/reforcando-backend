@@ -5,6 +5,9 @@ import br.com.reforcando.reforcandobackend.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/students")
 public class StudentController {
@@ -17,12 +20,17 @@ public class StudentController {
     }
 
     @PostMapping
-    public StudentDTO create(@RequestBody StudentDTO studentDTO) {
+    public StudentDTO create(@RequestBody @Valid StudentDTO studentDTO) {
         return this.studentService.create(studentDTO);
     }
 
     @GetMapping("/{id}")
     private StudentDTO findById(@PathVariable Long id) {
         return this.studentService.findById(id);
+    }
+
+    @GetMapping
+    private List<StudentDTO> findAll() {
+        return this.studentService.findAll();
     }
 }

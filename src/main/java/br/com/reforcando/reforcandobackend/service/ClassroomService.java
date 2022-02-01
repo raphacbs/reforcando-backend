@@ -7,6 +7,7 @@ import br.com.reforcando.reforcandobackend.repository.ClassroomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,9 +26,13 @@ public class ClassroomService {
         return classroomMapper.toDTO(classroomSaved);
     }
 
-
     public ClassroomDTO findById(Long id) {
         Optional<Classroom> optionalClass = classroomRepository.findById(id);
         return classroomMapper.toDTO(optionalClass.orElse(null));
+    }
+
+    public List<ClassroomDTO> findAll() {
+        List<Classroom> classrooms = this.classroomRepository.findAll();
+        return this.classroomMapper.toDTO(classrooms);
     }
 }

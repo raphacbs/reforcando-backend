@@ -7,6 +7,7 @@ import br.com.reforcando.reforcandobackend.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,5 +29,10 @@ public class StudentService {
     public StudentDTO findById(Long id) {
         Optional<Student> studentOptional = this.studentRepository.findById(id);
         return this.studentMapper.toDTO(studentOptional.orElse(null));
+    }
+
+    public List<StudentDTO> findAll() {
+        List<Student> students = this.studentRepository.findAll();
+        return this.studentMapper.toDTO(students);
     }
 }

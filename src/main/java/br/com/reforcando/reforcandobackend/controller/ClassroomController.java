@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/classrooms")
@@ -27,4 +28,10 @@ public class ClassroomController {
     public ClassroomDTO findById(@PathVariable Long id) {
         return classroomService.findById(id);
     }
+
+    @GetMapping
+    public List<ClassroomDTO> findAll() {
+        return this.classroomService.findAll();
+    }
+
 }
