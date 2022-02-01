@@ -25,7 +25,7 @@ public class PaymentEvent {
     private Double value;
     @Column(nullable = false)
     private LocalDate reference;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAluno")
+    @OneToOne
+    @JoinColumn(name = "studentId")
     private Student student;
 }

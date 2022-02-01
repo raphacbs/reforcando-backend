@@ -19,7 +19,7 @@ public class PaymentEventDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     private LocalDateTime paymentDate;
     private Double value;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate reference;
     private StudentDTO student;
 }
