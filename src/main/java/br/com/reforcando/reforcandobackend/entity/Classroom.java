@@ -6,31 +6,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDateTime;
+
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Aluno {
+public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     @Column(nullable = false)
-    private String nome;
+    private String description;
     @Column(nullable = false)
-    private String sobreNome;
+    private LocalDateTime createAt;
     @Column(nullable = false)
-    private Date dataNascimento;
+    private LocalDateTime startTime;
     @Column(nullable = false)
-    private Date dataCadastro;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "idResponsavel")
-    private Responsavel responsavel;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTurma")
-    private Turma turma;
+    private LocalDateTime endTime;
 }

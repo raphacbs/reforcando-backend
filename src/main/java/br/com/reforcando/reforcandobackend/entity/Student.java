@@ -6,25 +6,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Responsavel {
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(nullable = false)
-    private String nome;
+    private String name;
     @Column(nullable = false)
-    private String sobreNome;
+    private String lastName;
     @Column(nullable = false)
-    private Date dataNascimento;
+    private LocalDate birthDate;
     @Column(nullable = false)
-    private Date dataCadastro;
+    private LocalDateTime createAt;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinColumn(name = "parentId")
+    private Parent parent;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "classroomId")
+    private Classroom classroom;
 }

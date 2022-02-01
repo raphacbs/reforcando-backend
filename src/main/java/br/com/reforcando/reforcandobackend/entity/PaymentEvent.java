@@ -6,25 +6,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class EventoPagamento {
+public class PaymentEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(nullable = false)
-    private Date dataPagamento;
+    private LocalDateTime paymentDate;
     @Column(nullable = false)
-    private Double valor;
+    private Double value;
     @Column(nullable = false)
-    private Date competencia;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAluno")
-    private Aluno aluno;
+    private LocalDate reference;
+    @OneToOne
+    @JoinColumn(name = "studentId")
+    private Student student;
 }

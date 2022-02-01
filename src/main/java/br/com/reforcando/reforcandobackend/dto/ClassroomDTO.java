@@ -16,19 +16,19 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TurmaDTO {
+public class ClassroomDTO {
 
     private Long id;
     @NotBlank
     @Size(max = 20)
-    private String descricao;
+    private String description;
     @NotNull(message = "Data de cadastro não foi localizada")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
-    private LocalDateTime dataCadastro;
+    private LocalDateTime createAt;
     @NotNull(message = "Data de inicio não foi localizada")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
-    private LocalDateTime horaInicio;
+    private LocalDateTime startTime;
     @NotNull(message = "Hora de termino não foi localizada")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
-    private LocalDateTime horaTermino;
+    private LocalDateTime endTime;
 }
