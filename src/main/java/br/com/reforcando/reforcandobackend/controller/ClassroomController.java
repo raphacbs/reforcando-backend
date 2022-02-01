@@ -9,12 +9,12 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("api/v1/classrooms")
-public class ClassController {
+public class ClassroomController {
 
     private ClassroomService classroomService;
 
     @Autowired
-    public ClassController(ClassroomService classroomService) {
+    public ClassroomController(ClassroomService classroomService) {
         this.classroomService = classroomService;
     }
 
