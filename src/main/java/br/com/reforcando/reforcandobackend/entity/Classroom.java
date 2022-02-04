@@ -27,4 +27,6 @@ public class Classroom {
     private LocalDateTime startTime;
     @Column(nullable = false)
     private LocalDateTime endTime;
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    private boolean active;
 }

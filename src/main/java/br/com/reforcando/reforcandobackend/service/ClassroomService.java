@@ -35,4 +35,9 @@ public class ClassroomService {
         List<Classroom> classrooms = this.classroomRepository.findAll();
         return this.classroomMapper.toDTO(classrooms);
     }
+
+    public List<ClassroomDTO> findByDescription(String description) {
+        List<Classroom> classrooms = this.classroomRepository.findByDescription(description);
+        return classroomMapper.toDTO(classrooms);
+    }
 }
