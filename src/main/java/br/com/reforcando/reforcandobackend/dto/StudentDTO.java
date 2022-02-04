@@ -29,6 +29,8 @@ public class StudentDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     private LocalDateTime createAt;
     @NotNull
+    private boolean active;
+    @NotNull
     private ParentDTO parent;
     @NotNull
     private ClassroomDTO classroom;

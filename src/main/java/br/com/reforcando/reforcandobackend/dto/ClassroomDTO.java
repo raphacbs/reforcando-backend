@@ -31,4 +31,6 @@ public class ClassroomDTO {
     @NotNull(message = "Hora de termino não foi localizada")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     private LocalDateTime endTime;
+    @NotNull
+    private boolean active;
 }

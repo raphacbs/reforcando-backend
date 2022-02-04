@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("api/v1/classrooms")
 public class ClassroomController {
 
@@ -30,8 +32,14 @@ public class ClassroomController {
     }
 
     @GetMapping
-    public List<ClassroomDTO> findAll() {
-        return this.classroomService.findAll();
+    public List<ClassroomDTO> findAll(@RequestParam("description") Optional<String> description) {
+        if (description.isEmpty()) {
+            return this.classroomService.findAll();
+        } else {
+            return classroomService.findByDescription(description.get());
+        }
+
     }
+
 
 }

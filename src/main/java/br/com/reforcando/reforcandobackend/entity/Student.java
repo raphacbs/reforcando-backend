@@ -27,6 +27,8 @@ public class Student {
     private LocalDate birthDate;
     @Column(nullable = false)
     private LocalDateTime createAt;
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    private boolean active;
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "parentId")
     private Parent parent;
