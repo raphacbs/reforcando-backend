@@ -22,6 +22,12 @@ public class StudentDTO {
     private String name;
     @NotBlank
     private String lastName;
+    @NotBlank
+    private String schoolName;
+    @NotBlank
+    private String schoolClassroom;
+    @NotNull
+    private double monthlyFee;
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
