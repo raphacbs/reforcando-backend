@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/students")
@@ -31,7 +32,11 @@ public class StudentController {
     }
 
     @GetMapping
-    private List<StudentDTO> findAll() {
-        return this.studentService.findAll();
+    private List<StudentDTO> findAll(@RequestParam("classroomId") Optional<Long> classroomId) {
+        if (classroomId.isEmpty()) {
+            return this.studentService.findAll();
+        } else {
+            return this.studentService.findByClassroomId(classroomId.get());
+        }
     }
 }

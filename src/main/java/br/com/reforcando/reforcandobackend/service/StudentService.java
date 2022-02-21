@@ -35,4 +35,9 @@ public class StudentService {
         List<Student> students = this.studentRepository.findAll();
         return this.studentMapper.toDTO(students);
     }
+
+    public List<StudentDTO> findByClassroomId(Long classroomId) {
+        List<Student> students = this.studentRepository.findByClassroomId(classroomId);
+        return this.studentMapper.toDTO(students);
+    }
 }

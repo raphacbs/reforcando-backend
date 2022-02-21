@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -25,7 +24,7 @@ public class Parent {
     @Column(nullable = false)
     private String lastName;
     @Column(nullable = false)
-    private LocalDate birthDate;
-    @Column(nullable = false)
     private LocalDateTime createAt;
+    @Column(nullable = false, columnDefinition = "character varying default '00000000000'")
+    private String phoneNumber;
 }

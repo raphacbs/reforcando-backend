@@ -23,6 +23,12 @@ public class Student {
     private String name;
     @Column(nullable = false)
     private String lastName;
+    @Column(nullable = false, columnDefinition = "character varying default 'sem escola'")
+    private String schoolName;
+    @Column(nullable = false, columnDefinition = "character varying default 'sem serie'")
+    private String schoolClassroom;
+    @Column(nullable = false, columnDefinition = "double precision default 70.0")
+    private double monthlyFee;
     @Column(nullable = false)
     private LocalDate birthDate;
     @Column(nullable = false)
