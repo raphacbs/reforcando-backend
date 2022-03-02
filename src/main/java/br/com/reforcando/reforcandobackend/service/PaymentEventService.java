@@ -35,4 +35,8 @@ public class PaymentEventService {
         Optional<PaymentEvent> paymentEventOptional = this.paymentEventRepository.findById(id);
         return this.paymentEventMapper.toDTO(paymentEventOptional.orElse(null));
     }
+
+    public List<PaymentEventDTO> findByStudentId(Long studentId) {
+        return this.paymentEventMapper.toDTO(this.paymentEventRepository.findByStudentId(studentId));
+    }
 }
