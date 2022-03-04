@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -25,8 +26,13 @@ public class PaymentEventController {
     }
 
     @GetMapping
-    public List<PaymentEventDTO> findAll() {
-        return this.paymentEventService.findAll();
+    public List<PaymentEventDTO> findAll(@RequestParam("studentId") Optional<Long> studentId) {
+        if (studentId.isEmpty()) {
+            return this.paymentEventService.findAll();
+        } else {
+            return this.paymentEventService.findByStudentId(studentId.get());
+        }
+
     }
 
     @GetMapping("/{id}")
